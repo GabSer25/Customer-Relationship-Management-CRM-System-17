@@ -1,4 +1,4 @@
-// Task 1: Created Customer class
+// Task 1: Create a Customer class
 class Customer {
   constructor(name, email) {
     this.name = name;
@@ -23,4 +23,27 @@ customer1.addPurchase(200);
 customer1.addPurchase(150);
 console.log(`Customer: ${customer1.name}, Total Spent: $${customer1.getTotalSpent()}`);
 
+// Task 2: Create a SalesRep class
+class SalesRep {
+  constructor(name) {
+    this.name = name;
+    this.clients = [];
+  }
+
+  // Add customer to the sales rep’s list
+  addClient(customer) {
+    this.clients.push(customer);
+  }
+
+  // Get specific client's total spent
+  getClientTotal(name) {
+    const client = this.clients.find(c => c.name === name);
+    return client ? client.getTotalSpent() : 0;
+  }
+}
+
+// Example usage:
+const salesRep = new SalesRep("Jim Halpert");
+salesRep.addClient(customer1);
+console.log(`Sales Rep: ${salesRep.name}, Client Total (Michael): $${salesRep.getClientTotal("Michael Scott")}`);
 
