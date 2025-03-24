@@ -47,3 +47,23 @@ const salesRep = new SalesRep("Jim Halpert");
 salesRep.addClient(customer1);
 console.log(`Sales Rep: ${salesRep.name}, Client Total (Michael): $${salesRep.getClientTotal("Michael Scott")}`);
 
+// Task 3: Create a VIPCustomer Class (extends Customer)
+class VIPCustomer extends Customer {
+  constructor(name, email, vipLevel) {
+    super(name, email);
+    this.vipLevel = vipLevel;
+  }
+
+  // Override getTotalSpent with 10% bonus
+  getTotalSpent() {
+    const baseTotal = super.getTotalSpent();
+    return baseTotal + baseTotal * 0.10; // 10% bonus
+  }
+}
+
+// Example usage:
+const vipCustomer = new VIPCustomer("Bob Vance", "bobvance@email.com", "Gold");
+vipCustomer.addPurchase(600);
+vipCustomer.addPurchase(100);
+console.log(`VIP Customer: ${vipCustomer.name}, Total with Bonus: $${vipCustomer.getTotalSpent()}`);
+
